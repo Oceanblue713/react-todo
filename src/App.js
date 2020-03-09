@@ -2,25 +2,45 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+
+const TodoForm = ({addTodo}) => {
+  let input;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input ref={node => {
+        input = node;
+      }} />
+      <button onClick={() => {
+        addTodo(input.value);
+        input.value = '';
+      }}>
+        +
+      </button>
     </div>
   );
+};
+
+const Title = () => {
+  return (
+    <div>
+      <div>
+        <h1>To-Do</h1>
+      </div>
+    </div>
+  );
+}
+
+window.id = 0;
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    }
+  }
+  
 }
 
 export default App;
