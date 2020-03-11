@@ -40,7 +40,22 @@ class App extends React.Component {
       data: []
     }
   }
-  
+
+  addTodo(val) {
+    const todo = {text: val, id: window.id++}
+    this.state.data.push(todo);
+    this.setState({data: this.state.data})
+  }
+
+  render(){
+    return(
+      <div>
+        <Title />
+        <TodoForm addTodo={this.addTodo.bind(this)} />
+      </div>
+    )
+  }
+
 }
 
 export default App;
