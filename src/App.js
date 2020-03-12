@@ -30,9 +30,16 @@ const Title = () => {
   );
 }
 
-const Todo =({todo, remove}) => {
-// eslint-disable-next-line jsx-a11y/anchor-is-valid
-return (<a href="#" className="list-group-item" onClick={() => {remove(todo.id)}}>{todo.text}</a>);
+const Todo = ({todo, remove}) => {
+  return (<li onClick = {remove(todo.id)}>{todo.text}</li>);
+}
+
+const TodoList = ({todos, remove}) => {
+  const todoNode = todos.map((todo) => {
+    return(<Todo todo={todo} key={todo.id} remove={remove}/>)
+  });
+
+  return(<ul>{todoNode}</ul>)
 }
 
 window.id = 0;
