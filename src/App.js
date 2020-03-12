@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-
 const TodoForm = ({addTodo}) => {
   let input;
 
@@ -31,6 +30,11 @@ const Title = () => {
   );
 }
 
+const Todo =({todo, remove}) => {
+// eslint-disable-next-line jsx-a11y/anchor-is-valid
+return (<a href="#" className="list-group-item" onClick={() => {remove(todo.id)}}>{todo.text}</a>);
+}
+
 window.id = 0;
 class App extends React.Component {
   constructor(props) {
@@ -45,6 +49,15 @@ class App extends React.Component {
     const todo = {text: val, id: window.id++}
     this.state.data.push(todo);
     this.setState({data: this.state.data})
+  }
+
+  handleRemove(id){
+    const remainder = this.state.data.fliter((todo) => {
+      if(todo.id !== id)
+        return todo
+    });
+
+    this.setState({data: remainder})
   }
 
   render(){
