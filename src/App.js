@@ -59,9 +59,8 @@ class App extends React.Component {
   }
 
   handleRemove(id){
-    const remainder = this.state.data.fliter((todo) => {
-      if(todo.id !== id)
-        return todo
+    const remainder = this.state.data.filter((todo) => {
+      if(todo.id !== id) return todo;
     });
 
     this.setState({data: remainder})
@@ -72,6 +71,9 @@ class App extends React.Component {
       <div>
         <Title />
         <TodoForm addTodo={this.addTodo.bind(this)} />
+        <TodoList
+          todos={this.state.data}
+          remove={this.handleRemove.bind(this)} />
       </div>
     )
   }
