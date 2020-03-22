@@ -35,7 +35,7 @@ class TodoList extends Component {
   }
 
   deleteItem(key) {
-    let filteredItems = this.state.items.filter(function (item) {
+    var filteredItems = this.state.items.filter(function (item) {
       return (item.key !== key);
     });
 
@@ -43,6 +43,7 @@ class TodoList extends Component {
       items: filteredItems
     });
   }
+
   render() {
     return(
       <div className = "todoListMain">
